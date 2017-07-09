@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        
+        <IMG  src="http://www.servientrega.com/ServientregaThemeGenPortal/themes/html/dynamicSpots/img/cabezote.jpg"  width="1350" height="120" ></IMG>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <title>Facelets Template</title>
+    </h:head>
+
+    <h:body>
+
+       <div id="conteiner">
+
+        <div id="top"  class="ui-widget-header ui-corner-all">
+            <ui:insert name="top"><div id="divSesionUsuario">
+                    <b>Sesion iniciada por: </b>
+                    <p:outputLabel value="#{loginBean.obtenerUsuario()}" />
+                    <!--enlace con el sesion bean*-->
+                </div></ui:insert>
+        </div>
+        <div id="menu">   
+            <h:form>  
+                
+                <p:menubar>
+                    <p:submenu label="Administración"   icon="ui-icon-gear">
+                        <p:menuitem value="Usuario" url="#{appBean.basePath}usuario/indexUsuario.xhtml" />
+                        <p:separator />
+                        <p:menuitem value="Quit" url="#" />
+                    </p:submenu>
+
+                    <p:submenu label="Clientes" icon="ui-icon-pencil">
+                        <p:menuitem value="Clientes" url="#{appBean.basePath}clientes/clientes.xhtml" icon="ui-icon-arrowreturnthick-1-w" />
+                       
+                    </p:submenu>
+
+                   
+                    
+                    
+                       <p:menuitem value="Paquetes" icon="ui-icon-document" url="#{appBean.basePath}clientes/paquetes.xhtml"/>  
+                        
+                  
+                     <p:menuitem value="Tipos Paquete" url="#{appBean.basePath}clientes/tipos.xhtml" icon="ui-icon-arrowreturnthick-1-e" /> 
+                     
+                     
+                      <p:menuitem value="Rutas" url="#{appBean.basePath}clientes/rutas.xhtml" icon="ui-icon-arrowreturnthick-1-e" />
+                    
+                        <p:menuitem value="Grafica"  url="#{appBean.basePath}clientes/grafica.xhtml" icon="ui-icon-arrowreturnthick-1-e" />
+                      
+                      
+                       <p:menuitem value="Envios" url="#{appBean.basePath}clientes/envio.xhtml" icon="ui-icon-arrowreturnthick-1-e" /> 
+                       
+                        <p:menuitem value="Recorrido" url="#{appBean.basePath}clientes/recorrido.xhtml" icon="ui-icon-arrowreturnthick-1-e" /> 
+                        
+                        
+                         <p:menuitem value="Peticion" url="#{appBean.basePath}clientes/Operador.xhtml" icon="ui-icon-arrowreturnthick-1-e" /> 
+  
+                    <p:menuitem value="Salir" actionListener="#{loginBean.logout}" icon="ui-icon-close" oncomplete="handleLoginRequest(xhr, status, args)"/>  
+
+                      <p:menuitem value="Manual" url="https://www.dropbox.com/s/122bic5v94jpges/manualWEB.pdf?dl=0"  /> 
+                    
+                </p:menubar>
+            </h:form>
+        </div>
+
+        <div id="content" class="center_content">
+            <ui:insert name="content">Content</ui:insert>
+        </div>
+
+        <div id="bottom" class="ui-widget-header ui-corner-all">
+            <ui:insert name="bottom">Bottom</ui:insert>
+        </div>
+    </div>
+         <script type="text/javascript">
+             
+            function handleLoginRequest(xhr, status, args) {
+                if(args.loggetOut) {
+                    
+                    location.href =  args.ruta;
+                }
+            }
+        </script>
+
+    </h:body>
+
+</html>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07/07/2017 04:04:24 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Servicios" table="Servicios" catalog="bancario" optimistic-lock="version">
+        <id name="idServicios" type="java.lang.Integer">
+            <column name="idServicios" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="cuenta" class="model.Cuenta" fetch="select">
+            <column name="Cuenta_idCuenta" length="6" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tipoServicio" class="model.TipoServicio" fetch="select">
+            <column name="tipo_servicio_idtipo_servicio" not-null="true" />
+        </many-to-one>
+        <property name="montoPagar" type="java.lang.Double">
+            <column name="monto_pagar" precision="22" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07/07/2017 04:04:24 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Historial" table="Historial" catalog="bancario" optimistic-lock="version">
+        <id name="idHistorial" type="java.lang.Integer">
+            <column name="idHistorial" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="cuenta" class="model.Cuenta" fetch="select">
+            <column name="cuenta_idCuenta" length="6" not-null="true" />
+        </many-to-one>
+        <property name="fecha" type="date">
+            <column name="Fecha" length="10" not-null="true" />
+        </property>
+        <property name="tipo" type="string">
+            <column name="tipo" length="1" not-null="true" />
+        </property>
+        <property name="saldoAnterior" type="double">
+            <column name="saldo_anterior" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="monto" type="double">
+            <column name="monto" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="saldoPosterior" type="double">
+            <column name="saldo_posterior" precision="22" scale="0" not-null="true" />
+        </property>
+        <property name="cometario" type="string">
+            <column name="cometario" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

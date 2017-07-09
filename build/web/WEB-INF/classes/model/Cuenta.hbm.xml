@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 07/07/2017 04:04:24 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.Cuenta" table="Cuenta" catalog="bancario" optimistic-lock="version">
+        <id name="idCuenta" type="string">
+            <column name="idCuenta" length="6" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="cliente" class="model.Cliente" fetch="select">
+            <column name="Cliente_idCliente" length="10" not-null="true" />
+        </many-to-one>
+        <property name="saldo" type="java.lang.Double">
+            <column name="Saldo" precision="22" scale="0" />
+        </property>
+        <set name="servicioses" table="Servicios" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Cuenta_idCuenta" length="6" not-null="true" />
+            </key>
+            <one-to-many class="model.Servicios" />
+        </set>
+        <set name="historials" table="Historial" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="cuenta_idCuenta" length="6" not-null="true" />
+            </key>
+            <one-to-many class="model.Historial" />
+        </set>
+    </class>
+</hibernate-mapping>

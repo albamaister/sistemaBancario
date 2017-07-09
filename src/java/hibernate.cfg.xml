@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/bancario?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">alba0982787117</property>
+    <mapping resource="model/TipoServicio.hbm.xml"/>
+    <mapping resource="model/Servicios.hbm.xml"/>
+    <mapping resource="model/Historial.hbm.xml"/>
+    <mapping resource="model/Cuenta.hbm.xml"/>
+    <mapping resource="model/Cliente.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>
